@@ -116,7 +116,7 @@ const UpdateRental = () => {
                                     />
                                 </Form.Group>
                                 <Button variant="primary" type="submit" className="w-100" onClick={update}>
-                                    Submit
+                                    Update
                                 </Button>
                             </Form>
                         </Card.Body>

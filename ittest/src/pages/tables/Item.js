@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import Swal from 'sweetalert2';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 const Item = () => {
     const [items, setItems] = useState([]);
@@ -86,8 +87,8 @@ const Item = () => {
                                         <TableCell>{items.finepday}</TableCell>
                                         <TableCell>{items.availability}</TableCell>
                                         <TableCell>
-                                            <Button onClick={() => navigate(`/updateItems/${items._id}/${items.itemid}/${items.itemname}/${items.rentpday}/${items.finepday}/${items.availability}`)}>Update</Button>
-                                            <Button onClick={() => confirmDelete(items._id)}>Delete</Button>
+                                            <Button onClick={() => navigate(`/updateItems/${items._id}/${items.itemid}/${items.itemname}/${items.rentpday}/${items.finepday}/${items.availability}`)}><FaEdit /></Button>
+                                            <Button onClick={() => confirmDelete(items._id)}><FaTrash /></Button>
                                         </TableCell>
                                     </TableRow>
                                 ))

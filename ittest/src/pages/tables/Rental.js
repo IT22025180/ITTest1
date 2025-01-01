@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import Swal from 'sweetalert2';
-import { FaFilePdf } from 'react-icons/fa';
+import { FaEdit, FaFilePdf, FaTrash } from 'react-icons/fa';
 import jsPDF from 'jspdf';
 
 const Rental = () => {
@@ -73,9 +73,6 @@ const Rental = () => {
         y += 50;
 
         doc.save(`${rental.rentid}_report.pdf`);
-
-
-
     }
 
     return (
@@ -105,8 +102,8 @@ const Rental = () => {
                                         <TableCell>{rental.dueDate}</TableCell>
                                         <TableCell>{rental.cost}</TableCell>
                                         <TableCell>
-                                            <Button onClick={() => navigate(`/updateRentals/${rental._id}/${rental.rentid}/${rental.rentDate}/${rental.returnDate}/${rental.dueDate}/${rental.cost}`)}>Update</Button>
-                                            <Button onClick={() => confirmDelete(rental._id)}>Delete</Button>
+                                            <Button onClick={() => navigate(`/updateRentals/${rental._id}/${rental.rentid}/${rental.rentDate}/${rental.returnDate}/${rental.dueDate}/${rental.cost}`)}><FaEdit /></Button>
+                                            <Button onClick={() => confirmDelete(rental._id)}><FaTrash /></Button>
                                             <Button onClick={() => genBill(rental)}><FaFilePdf /></Button>
                                         </TableCell>
                                     </TableRow>

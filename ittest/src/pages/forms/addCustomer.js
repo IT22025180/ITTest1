@@ -3,6 +3,7 @@ import { Card, Button, Form, Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import Axios from 'axios';
 import Swal from 'sweetalert2';
+import * as Yup from 'yup';
 
 const AddCustomer = () => {
 
@@ -10,11 +11,29 @@ const AddCustomer = () => {
     const [cname, setcname] = useState('');
     const [contact, setcontact] = useState('');
     const [city, setCity] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const navigate = useNavigate();
 
+    const validateSchema = Yup.object().shape({
+        cid: Yup.string().required('Customer id is required'),
+        cname: Yup.string().required('Customer name is Required'),
+        contact: Yup.string().required('Contact is required'),
+        city: Yup.string().required('City is required'),
+    })
+
     const addCustomer = async () => {
         try {
+
+            await validateSchema.validate(
+                {
+                    cid,
+                    cname,
+                    contact,
+                    city
+                },
+                { abortEarly: false }
+            );
 
             const response = await Axios.post('http://localhost:4001/api/addCustomer', {
 
@@ -37,7 +56,15 @@ const AddCustomer = () => {
             setcontact('');
             setCity('');
         } catch (error) {
-            console.log(error);
+            if (error instanceof Yup.ValidationError) {
+                const errors = {};
+                error.inner.forEach(err => {
+                    errors[err.path] = err.message;
+                });
+                setErrorMessage(errors);
+            } else {
+                console.error('Error', error);
+            }
         }
     }
     return (
@@ -58,9 +85,9 @@ const AddCustomer = () => {
                                         value={cid}
                                         onChange={e => setcid(e.target.value)}
                                         placeholder="Enter customer's ID"
-                                        required
                                     />
                                 </Form.Group>
+                                {errorMessage.cid && <div className="d-flex justify-content-center text-danger">{errorMessage.cid}</div>}
                                 <Form.Group className="mb-3">
                                     <Form.Label>Customer Name</Form.Label>
                                     <Form.Control
@@ -69,9 +96,9 @@ const AddCustomer = () => {
                                         value={cname}
                                         onChange={e => setcname(e.target.value)}
                                         placeholder="Enter customer Name"
-                                        required
                                     />
                                 </Form.Group>
+                                {errorMessage.cname && <div className="d-flex justify-content-center text-danger">{errorMessage.cname}</div>}
                                 <Form.Group className="mb-3">
                                     <Form.Label>City</Form.Label>
                                     <Form.Control
@@ -80,9 +107,9 @@ const AddCustomer = () => {
                                         value={city}
                                         onChange={e => setCity(e.target.value)}
                                         placeholder="Enter city"
-                                        required
                                     />
                                 </Form.Group>
+                                {errorMessage.city && <div className="d-flex justify-content-center text-danger">{errorMessage.city}</div>}
                                 <Form.Group className="mb-3">
                                     <Form.Label>Contact</Form.Label>
                                     <Form.Control
@@ -91,9 +118,9 @@ const AddCustomer = () => {
                                         value={contact}
                                         onChange={e => setcontact(e.target.value)}
                                         placeholder="Enter contact number"
-                                        required
                                     />
                                 </Form.Group>
+                                {errorMessage.contact && <div className="d-flex justify-content-center text-danger">{errorMessage.contact}</div>}
                                 <Button variant="primary" type="submit" className="w-100" onClick={addCustomer}>
                                     Submit
                                 </Button>
@@ -105,7 +132,7 @@ const AddCustomer = () => {
                                 <br />
                                 <br />
                                 <Button onClick={() => navigate('/additem')}>Add Item</Button>
-                                <Button onClick={() => navigate('/addrental')}>Add Rental</Button>
+                                <Button onClick={() => navigate('/addrental')} style={{ marginLeft: 20 }}>Add Rental</Button>
                             </Form>
                         </Card.Body>
                     </Card>

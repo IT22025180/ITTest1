@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import Swal from 'sweetalert2';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 const Customer = () => {
     const [customer, setcustomer] = useState([]);
@@ -84,8 +85,8 @@ const Customer = () => {
                                         <TableCell>{customer.contact}</TableCell>
                                         <TableCell>{customer.city}</TableCell>
                                         <TableCell>
-                                            <Button onClick={() => navigate(`/updateCustomer/${customer._id}/${customer.cname}/${customer.contact}/${customer.city}`)}>Update</Button>
-                                            <Button onClick={() => confirmDelete(customer._id)}>Delete</Button>
+                                            <Button onClick={() => navigate(`/updateCustomer/${customer._id}/${customer.cid}/${customer.cname}/${customer.contact}/${customer.city}`)}><FaEdit /></Button>
+                                            <Button onClick={() => confirmDelete(customer._id)}><FaTrash /></Button>
                                         </TableCell>
                                     </TableRow>
                                 ))

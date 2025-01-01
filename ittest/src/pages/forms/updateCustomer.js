@@ -27,6 +27,7 @@ const UpdateCustomer = () => {
             });
 
             console.log("Customer update is successful", response.data);
+            navigate('/customers');
         } catch (error) {
             console.log(error);
         }
@@ -44,7 +45,7 @@ const UpdateCustomer = () => {
             setcname('');
             setcontact('');
             setCity('');
-            navigate('/customers');
+
         } catch (error) {
             console.log("Error", error);
         }
