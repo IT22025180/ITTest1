@@ -2,6 +2,9 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const routerCus = require('./Customer/customerRoute');
+const routerItem = require('./Item/itemRoute');
+const routerRental = require('./Rental/rentalRoute');
 
 dotenv.config();
 //rest
@@ -39,3 +42,6 @@ app.listen(PORT, () => {
     console.log(`Server is Running on ${PORT}`);
 })
 
+app.use('/api', routerCus);
+app.use('/api', routerItem);
+app.use('/api', routerRental);
