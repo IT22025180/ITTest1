@@ -62,8 +62,8 @@ const Rental = () => {
         const genPDF = `Sample Bill
                             \nRental details\n
                             ---------------\n 
-                            Customer name : \n
-                            Rental item : \n
+                            Customer name : Vanuja \n
+                            Rental item : Sew Machine\n
                             Rental Start Date : ${rental.rentDate}\n
                             Expected Return Date : ${rental.returnDate}\n
                             Total Cost : ${rental.cost}\n
