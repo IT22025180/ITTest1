@@ -77,7 +77,7 @@ const AddRental = () => {
             <Row className="justify-content-center">
                 <Col md={6}>
                     <Card>
-                        <Card.Header className="bg-primary text-white text-center">
+                        <Card.Header className=" text-white text-center" style={{ backgroundColor: 'green' }}>
                             <h4>Add Rental Details</h4>
                         </Card.Header>
                         <Card.Body>
@@ -137,16 +137,16 @@ const AddRental = () => {
                                         name="cost"
                                         value={cost}
                                         onChange={e => setcost(e.target.value)}
-
+                                        placeholder="Enter Cost"
                                     />
                                 </Form.Group>
                                 {errorMessage.cost && <div className="d-flex justify-content-center text-danger">{errorMessage.cost}</div>}
-                                <Button variant="primary" type="submit" className="w-100" onClick={addRental}>
+                                <Button variant="primary" type="submit" className="w-100" onClick={addRental} style={{ backgroundColor: 'green' }}>
                                     Submit
                                 </Button>
                                 <br />
                                 <br />
-                                <Button variant="primary" type="submit" className="w-100" onClick={() => navigate('/rentals')}>
+                                <Button variant="primary" type="submit" style={{ backgroundColor: 'green' }} className="w-100" onClick={() => navigate('/rentals')}>
                                     Rentals
                                 </Button>
                                 <br />

@@ -72,7 +72,7 @@ const AddCustomer = () => {
             <Row className="justify-content-center">
                 <Col md={6}>
                     <Card>
-                        <Card.Header className="bg-primary text-white text-center">
+                        <Card.Header className=" text-white text-center" style={{ backgroundColor: 'purple' }}>
                             <h4>Add Customer Details</h4>
                         </Card.Header>
                         <Card.Body>
@@ -121,12 +121,12 @@ const AddCustomer = () => {
                                     />
                                 </Form.Group>
                                 {errorMessage.contact && <div className="d-flex justify-content-center text-danger">{errorMessage.contact}</div>}
-                                <Button variant="primary" type="submit" className="w-100" onClick={addCustomer}>
+                                <Button variant="primary" style={{ backgroundColor: 'purple' }} type="submit" className="w-100" onClick={addCustomer}>
                                     Submit
                                 </Button>
                                 <br />
                                 <br />
-                                <Button variant="primary" type="submit" className="w-100" onClick={() => navigate('/customers')}>
+                                <Button variant="primary" type="submit" className="w-100" onClick={() => navigate('/customers')} style={{ backgroundColor: 'purple' }}>
                                     Customers
                                 </Button>
                                 <br />

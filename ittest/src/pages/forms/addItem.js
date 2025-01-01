@@ -78,8 +78,8 @@ const AddItem = () => {
             <Row className="justify-content-center">
                 <Col md={6}>
                     <Card>
-                        <Card.Header className="bg-primary text-white text-center">
-                            <h4>Add Item Details</h4>
+                        <Card.Header className=" text-white text-center" style={{ backgroundColor: 'black' }}>
+                            <h4 >Add Item Details</h4>
                         </Card.Header>
                         <Card.Body>
                             <Form>
@@ -139,12 +139,12 @@ const AddItem = () => {
                                     </Form.Control>
                                 </Form.Group>
                                 {errorMessage.availability && <div className="d-flex justify-content-center text-danger">{errorMessage.availability}</div>}
-                                <Button variant="primary" type="submit" className="w-100" onClick={addItem}>
+                                <Button variant="primary" type="submit" className="w-100" style={{ backgroundColor: 'black' }} onClick={addItem}>
                                     Submit
                                 </Button>
                                 <br />
                                 <br />
-                                <Button variant="primary" type="submit" className="w-100" onClick={() => navigate('/items')}>
+                                <Button variant="primary" style={{ backgroundColor: 'black' }} type="submit" className="w-100" onClick={() => navigate('/items')}>
                                     Items
                                 </Button>
                                 <br />
