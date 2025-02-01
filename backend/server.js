@@ -38,7 +38,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 4001;
 
 //run
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is Running on ${PORT}`);
 })
 
