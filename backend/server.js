@@ -42,6 +42,8 @@ app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is Running on ${PORT}`);
 })
 
+
+
 app.use('/api', routerCus);
 app.use('/api', routerItem);
 app.use('/api', routerRental);
